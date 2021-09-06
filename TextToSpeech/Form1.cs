@@ -91,7 +91,7 @@ namespace TextToSpeech
 
             }
         }
-
+        //to resume
         private void BtnResume_Click(object sender, EventArgs e)
         {
             if (isStopped == false)
@@ -198,7 +198,7 @@ namespace TextToSpeech
                 return;
 
             }
-            ///helllo
+            ///hellloo changes
 
             if (txtSpechText.SelectionLength > 0)
             {
