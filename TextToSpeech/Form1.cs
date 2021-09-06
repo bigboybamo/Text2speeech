@@ -198,6 +198,7 @@ namespace TextToSpeech
                 return;
 
             }
+            ///helllo
 
             if (txtSpechText.SelectionLength > 0)
             {
