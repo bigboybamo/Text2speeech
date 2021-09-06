@@ -1,0 +1,16 @@
+C:\Users\VICTOR\source\repos\TextToSpeech\TextToSpeech\bin\Debug\TextToSpeech.exe.config
+C:\Users\VICTOR\source\repos\TextToSpeech\TextToSpeech\bin\Debug\TextToSpeech.exe
+C:\Users\VICTOR\source\repos\TextToSpeech\TextToSpeech\bin\Debug\TextToSpeech.pdb
+C:\Users\VICTOR\source\repos\TextToSpeech\TextToSpeech\obj\Debug\TextToSpeech.csprojAssemblyReference.cache
+C:\Users\VICTOR\source\repos\TextToSpeech\TextToSpeech\obj\Debug\TextToSpeech.Form1.resources
+C:\Users\VICTOR\source\repos\TextToSpeech\TextToSpeech\obj\Debug\TextToSpeech.Properties.Resources.resources
+C:\Users\VICTOR\source\repos\TextToSpeech\TextToSpeech\obj\Debug\TextToSpeech.csproj.GenerateResource.cache
+C:\Users\VICTOR\source\repos\TextToSpeech\TextToSpeech\obj\Debug\TextToSpeech.csproj.CoreCompileInputs.cache
+C:\Users\VICTOR\source\repos\TextToSpeech\TextToSpeech\obj\Debug\TextToSpeech.exe
+C:\Users\VICTOR\source\repos\TextToSpeech\TextToSpeech\obj\Debug\TextToSpeech.pdb
+C:\Users\VICTOR\source\repos\TextToSpeech\TextToSpeech\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\VICTOR\source\repos\TextToSpeech\TextToSpeech\bin\Debug\GemBox.Pdf.dll
+C:\Users\VICTOR\source\repos\TextToSpeech\TextToSpeech\bin\Debug\Pkcs11Interop.dll
+C:\Users\VICTOR\source\repos\TextToSpeech\TextToSpeech\bin\Debug\GemBox.Pdf.xml
+C:\Users\VICTOR\source\repos\TextToSpeech\TextToSpeech\bin\Debug\Pkcs11Interop.xml
+C:\Users\VICTOR\source\repos\TextToSpeech\TextToSpeech\obj\Debug\TextToSpeech.csproj.CopyComplete
