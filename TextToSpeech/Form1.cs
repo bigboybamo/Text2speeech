@@ -19,8 +19,9 @@ namespace TextToSpeech
         {
             InitializeComponent();
         }
-        SpeechSynthesizer synthVoice;
-        bool isStopped;
+
+        private SpeechSynthesizer synthVoice;
+        private bool isStopped;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -28,17 +29,13 @@ namespace TextToSpeech
             string theText = txtSpechText.Text;
             if (voice == "Select Voice")
             {
-
                 MessageBox.Show("Select a Voice");
                 return;
-
             }
             if (theText == "")
             {
-
                 MessageBox.Show("Type some text");
                 return;
-
             }
             synthVoice = new SpeechSynthesizer();
             synthVoice.SetOutputToDefaultAudioDevice();
@@ -47,18 +44,6 @@ namespace TextToSpeech
             synthVoice.Volume = trackBar2.Value;
             synthVoice.SpeakAsync(theText);
             isStopped = false;
-        }
-
-
-
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -79,31 +64,17 @@ namespace TextToSpeech
 
         private void BtnPause_Click(object sender, EventArgs e)
         {
-            if (isStopped == false)
+            if (!isStopped && (synthVoice.State == SynthesizerState.Speaking))
             {
-
-                if (synthVoice.State == SynthesizerState.Speaking)
-                {
-
-                    synthVoice.Pause();
-
-                }
-
+                synthVoice.Pause();
             }
         }
-        //to resume
+
         private void BtnResume_Click(object sender, EventArgs e)
         {
-            if (isStopped == false)
+            if (!isStopped && (synthVoice.State == SynthesizerState.Paused))
             {
-
-                if (synthVoice.State == SynthesizerState.Paused)
-                {
-
-                    synthVoice.Resume();
-
-                }
-
+                synthVoice.Resume();
             }
         }
 
@@ -111,11 +82,8 @@ namespace TextToSpeech
         {
             if (synthVoice != null)
             {
-
                 synthVoice.Dispose();
                 isStopped = true;
-
-
             }
         }
 
@@ -130,31 +98,26 @@ namespace TextToSpeech
                 string ending = Path.GetExtension(fileName);
                 if (ending == ".txt")
                 {
-
                     GetTextFile(fileName);
-
                 }
-
                 else if (ending == ".pdf")
                 {
-
                     GetPdfFile(fileName);
-
                 }
                 else
                 {
-
                     MessageBox.Show("Error");
-
                 }
             }
         }
+
         private void GetTextFile(string filePath)
         {
             StreamReader objReader = new StreamReader(filePath);
             txtSpechText.Text = objReader.ReadToEnd();
             objReader.Close();
         }
+
         private void GetPdfFile(string filePath)
         {
             txtSpechText.Text = "";
@@ -166,16 +129,12 @@ namespace TextToSpeech
             {
                 foreach (var page in doc.Pages)
                 {
-
                     txtSpechText.Text += page.Content.ToString();
-
                 }
             }
             else
             {
-
                 MessageBox.Show("Too many pages");
-
             }
         }
 
@@ -185,31 +144,24 @@ namespace TextToSpeech
 
             if (voice == "Select Voice")
             {
-
                 MessageBox.Show("Select a Voice");
                 return;
-
             }
 
             if (txtSpechText.Text.Trim() == "")
             {
-
                 MessageBox.Show("Type some text");
                 return;
-
             }
-            ///hellloo changes
 
             if (txtSpechText.SelectionLength > 0)
             {
-
                 string sel = txtSpechText.SelectedText;
                 SpeechSynthesizer syn = new SpeechSynthesizer();
                 syn.SetOutputToDefaultAudioDevice();
                 syn.SelectVoice(voice);
                 syn.Speak(sel.Trim());
                 syn.Dispose();
-
             }
         }
     }
