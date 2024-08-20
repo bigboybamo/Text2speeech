@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31205.134
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextToSpeech", "TextToSpeech\TextToSpeech.csproj", "{424A013D-E0DD-43F0-A303-181A4E0F3B1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextToSpeechTests", "TextToSpeechTests\TextToSpeechTests.csproj", "{21624325-69E3-4686-98D6-25C73DF4AFCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{424A013D-E0DD-43F0-A303-181A4E0F3B1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{424A013D-E0DD-43F0-A303-181A4E0F3B1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{424A013D-E0DD-43F0-A303-181A4E0F3B1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21624325-69E3-4686-98D6-25C73DF4AFCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21624325-69E3-4686-98D6-25C73DF4AFCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21624325-69E3-4686-98D6-25C73DF4AFCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21624325-69E3-4686-98D6-25C73DF4AFCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

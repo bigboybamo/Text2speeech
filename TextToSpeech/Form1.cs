@@ -35,12 +35,17 @@ namespace TextToSpeech
                 return;
             }
 
+            Speak(theText, voice);
+        }
+
+        public void Speak(string text, string voice)
+        {
             InitializeSpeechSynthesizer(new SpeechSynthesizerWrapper());
             synthVoice.SetOutputToDefaultAudioDevice();
             synthVoice.SelectVoice(voice);
             synthVoice.Rate = trackBar1.Value;
             synthVoice.Volume = trackBar2.Value;
-            synthVoice.SpeakAsync(theText);
+            synthVoice.SpeakAsync(text);
             isStopped = false;
         }
 
@@ -49,10 +54,7 @@ namespace TextToSpeech
             InitializeSpeechSynthesizer(new SpeechSynthesizerWrapper());
             cmbVoice.Items.Add("Select Voice");
             cmbVoice.SelectedIndex = 0;
-            foreach (var voice in synthVoice.GetInstalledVoices())
-            {
-                cmbVoice.Items.Add(voice.VoiceInfo.Name);
-            }
+            LoadVoices();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -152,17 +154,21 @@ namespace TextToSpeech
             if (txtSpechText.SelectionLength > 0)
             {
                 string sel = txtSpechText.SelectedText;
-                InitializeSpeechSynthesizer(new SpeechSynthesizerWrapper());
-                synthVoice.SetOutputToDefaultAudioDevice();
-                synthVoice.SelectVoice(voice);
-                synthVoice.SpeakAsync(sel.Trim());
-                synthVoice.Dispose();
+                Speak(sel, voice);
             }
         }
 
         public void InitializeSpeechSynthesizer(ISpeechSynthesizer synthesizer)
         {
             synthVoice = synthesizer;
+        }
+
+        public void LoadVoices()
+        {
+            foreach (var voice in synthVoice.GetInstalledVoices())
+            {
+                cmbVoice.Items.Add(voice.VoiceInfo.Name);
+            }
         }
     }
 }
