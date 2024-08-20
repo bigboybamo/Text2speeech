@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Speech.Synthesis;
 using GemBox.Pdf;
+using TextToSpeech.Interfaces;
+using TextToSpeech.Implementations;
 
 namespace TextToSpeech
 {
@@ -19,25 +21,21 @@ namespace TextToSpeech
         {
             InitializeComponent();
         }
-
-        private SpeechSynthesizer synthVoice;
+        private ISpeechSynthesizer synthVoice;
         private bool isStopped;
 
         private void button1_Click(object sender, EventArgs e)
         {
             string voice = cmbVoice.Text;
+            int selected = cmbVoice.SelectedIndex;
             string theText = txtSpechText.Text;
-            if (voice == "Select Voice")
+            if (voice == "Select Voice" || selected == 0)
             {
-                MessageBox.Show("Select a Voice");
+                MessageBox.Show("Please Select a Voice");
                 return;
             }
-            if (theText == "")
-            {
-                MessageBox.Show("Type some text");
-                return;
-            }
-            synthVoice = new SpeechSynthesizer();
+
+            InitializeSpeechSynthesizer(new SpeechSynthesizerWrapper());
             synthVoice.SetOutputToDefaultAudioDevice();
             synthVoice.SelectVoice(voice);
             synthVoice.Rate = trackBar1.Value;
@@ -48,18 +46,18 @@ namespace TextToSpeech
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            synthVoice = new SpeechSynthesizer();
-            foreach (InstalledVoice voice in synthVoice.GetInstalledVoices())
+            InitializeSpeechSynthesizer(new SpeechSynthesizerWrapper());
+            cmbVoice.Items.Add("Select Voice");
+            cmbVoice.SelectedIndex = 0;
+            foreach (var voice in synthVoice.GetInstalledVoices())
             {
-                VoiceInfo infoVoice = voice.VoiceInfo;
-                cmbVoice.Items.Add(infoVoice.Name);
+                cmbVoice.Items.Add(voice.VoiceInfo.Name);
             }
-            synthVoice.Dispose();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            synthVoice.Dispose();
+            synthVoice?.Dispose();
         }
 
         private void BtnPause_Click(object sender, EventArgs e)
@@ -80,11 +78,8 @@ namespace TextToSpeech
 
         private void BtnStop_Click(object sender, EventArgs e)
         {
-            if (synthVoice != null)
-            {
-                synthVoice.Dispose();
-                isStopped = true;
-            }
+            synthVoice?.Dispose();
+            isStopped = true;
         }
 
         private void BtnOpenFile_Click(object sender, EventArgs e)
@@ -157,12 +152,17 @@ namespace TextToSpeech
             if (txtSpechText.SelectionLength > 0)
             {
                 string sel = txtSpechText.SelectedText;
-                SpeechSynthesizer syn = new SpeechSynthesizer();
-                syn.SetOutputToDefaultAudioDevice();
-                syn.SelectVoice(voice);
-                syn.Speak(sel.Trim());
-                syn.Dispose();
+                InitializeSpeechSynthesizer(new SpeechSynthesizerWrapper());
+                synthVoice.SetOutputToDefaultAudioDevice();
+                synthVoice.SelectVoice(voice);
+                synthVoice.SpeakAsync(sel.Trim());
+                synthVoice.Dispose();
             }
+        }
+
+        public void InitializeSpeechSynthesizer(ISpeechSynthesizer synthesizer)
+        {
+            synthVoice = synthesizer;
         }
     }
 }

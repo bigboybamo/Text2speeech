@@ -79,7 +79,7 @@ namespace TextToSpeech
             // 
             // BtnPause
             // 
-            this.BtnPause.Location = new System.Drawing.Point(492, 97);
+            this.BtnPause.Location = new System.Drawing.Point(464, 97);
             this.BtnPause.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnPause.Name = "BtnPause";
             this.BtnPause.Size = new System.Drawing.Size(128, 57);
@@ -91,7 +91,7 @@ namespace TextToSpeech
             // 
             // BtnResume
             // 
-            this.BtnResume.Location = new System.Drawing.Point(700, 97);
+            this.BtnResume.Location = new System.Drawing.Point(649, 97);
             this.BtnResume.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnResume.Name = "BtnResume";
             this.BtnResume.Size = new System.Drawing.Size(134, 57);
@@ -102,7 +102,7 @@ namespace TextToSpeech
             // 
             // BtnStop
             // 
-            this.BtnStop.Location = new System.Drawing.Point(898, 97);
+            this.BtnStop.Location = new System.Drawing.Point(832, 97);
             this.BtnStop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnStop.Name = "BtnStop";
             this.BtnStop.Size = new System.Drawing.Size(112, 57);
@@ -244,14 +244,14 @@ namespace TextToSpeech
             // 
             // cmbVoice
             // 
+            this.cmbVoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.25F);
             this.cmbVoice.FormattingEnabled = true;
-            this.cmbVoice.Location = new System.Drawing.Point(460, 18);
+            this.cmbVoice.Location = new System.Drawing.Point(464, 18);
             this.cmbVoice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbVoice.Name = "cmbVoice";
             this.cmbVoice.Size = new System.Drawing.Size(607, 52);
             this.cmbVoice.TabIndex = 10;
-            this.cmbVoice.Text = "Select Voice";
             // 
             // ofd1
             // 
