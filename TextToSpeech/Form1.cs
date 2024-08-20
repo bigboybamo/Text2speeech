@@ -12,6 +12,7 @@ using System.Speech.Synthesis;
 using GemBox.Pdf;
 using TextToSpeech.Interfaces;
 using TextToSpeech.Implementations;
+using TextToSpeech.Utilites;
 
 namespace TextToSpeech
 {
@@ -47,6 +48,7 @@ namespace TextToSpeech
             synthVoice.Volume = trackBar2.Value;
             synthVoice.SpeakAsync(text);
             isStopped = false;
+            Logger.LogSpeechText(text);
         }
 
         private void Form1_Load(object sender, EventArgs e)
