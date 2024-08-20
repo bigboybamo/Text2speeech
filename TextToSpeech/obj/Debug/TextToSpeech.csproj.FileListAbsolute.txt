@@ -30,3 +30,4 @@ C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\obj\Debug\TextToSp.861EFCA
 C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\obj\Debug\TextToSpeech.exe
 C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\obj\Debug\TextToSpeech.pdb
 C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\obj\Debug\TextToSpeech.Form1.resources
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\bin\Debug\App.config
