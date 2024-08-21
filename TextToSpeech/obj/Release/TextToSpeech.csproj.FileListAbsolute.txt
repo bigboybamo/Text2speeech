@@ -1,0 +1,17 @@
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\bin\Release\App.config
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\bin\Release\TextToSpeech.exe.config
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\bin\Release\TextToSpeech.exe
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\bin\Release\TextToSpeech.pdb
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\bin\Release\BouncyCastle.Crypto.dll
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\bin\Release\GemBox.Pdf.dll
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\bin\Release\Pkcs11Interop.dll
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\bin\Release\GemBox.Pdf.xml
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\bin\Release\Pkcs11Interop.xml
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\obj\Release\TextToSpeech.csproj.AssemblyReference.cache
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\obj\Release\TextToSpeech.Form1.resources
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\obj\Release\TextToSpeech.Properties.Resources.resources
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\obj\Release\TextToSpeech.csproj.GenerateResource.cache
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\obj\Release\TextToSpeech.csproj.CoreCompileInputs.cache
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\obj\Release\TextToSp.861EFCAC.Up2Date
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\obj\Release\TextToSpeech.exe
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\obj\Release\TextToSpeech.pdb
