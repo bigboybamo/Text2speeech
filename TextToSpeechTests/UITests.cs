@@ -36,6 +36,7 @@ namespace TextToSpeechTests
         [DataTestMethod]
         [DataRow("This is an automated test.")]
         [DataRow("Automated, this test is.")]
+        [DataRow("ThisisNotAword")]
         public void Should_SpeakSentence_WhenButtonIsClicked(string param)
         {
             //Arrange
