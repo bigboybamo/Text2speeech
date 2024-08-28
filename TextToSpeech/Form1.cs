@@ -12,7 +12,8 @@ using System.Speech.Synthesis;
 using GemBox.Pdf;
 using TextToSpeech.Interfaces;
 using TextToSpeech.Implementations;
-using TextToSpeech.Utilites;
+using TextToSpeechLogger;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TextToSpeech
 {
@@ -27,15 +28,9 @@ namespace TextToSpeech
 
         private void button1_Click(object sender, EventArgs e)
         {
+            CheckVoiceandText();
             string voice = cmbVoice.Text;
-            int selected = cmbVoice.SelectedIndex;
             string theText = txtSpechText.Text;
-            if (voice == "Select Voice" || selected == 0)
-            {
-                MessageBox.Show("Please Select a Voice");
-                return;
-            }
-
             Speak(theText, voice);
         }
 
@@ -139,24 +134,17 @@ namespace TextToSpeech
 
         private void BtnPronounce_Click(object sender, EventArgs e)
         {
+            CheckVoiceandText(true);
             string voice = cmbVoice.Text;
-
-            if (voice == "Select Voice")
-            {
-                MessageBox.Show("Select a Voice");
-                return;
-            }
-
-            if (txtSpechText.Text.Trim() == "")
-            {
-                MessageBox.Show("Type some text");
-                return;
-            }
-
             if (txtSpechText.SelectionLength > 0)
             {
-                string sel = txtSpechText.SelectedText;
-                Speak(sel, voice);
+                string selectedText = txtSpechText.SelectedText;
+                int selectionStart = txtSpechText.SelectionStart;
+                int selectionLength = txtSpechText.SelectionLength;
+                txtSpechText.Focus();
+                txtSpechText.Select(selectionStart, selectionLength);
+                Speak(selectedText, voice);
+                Logger.LogSpeechText(selectedText);
             }
         }
 
@@ -170,6 +158,27 @@ namespace TextToSpeech
             foreach (var voice in synthVoice.GetInstalledVoices())
             {
                 cmbVoice.Items.Add(voice.VoiceInfo.Name);
+            }
+        }
+
+        private void CheckVoiceandText(bool ishighLighted = false)
+        {
+            if (cmbVoice.Text == "Select Voice" || cmbVoice.SelectedIndex == 0)
+            {
+                MessageBox.Show("Please Select a Voice");
+                return;
+            }
+
+            if (txtSpechText.Text.Trim() == "")
+            {
+                MessageBox.Show("Please Enter Some Text");
+                return;
+            }
+
+            if(ishighLighted && txtSpechText.SelectionLength == 0)
+            {
+                MessageBox.Show("Please Highlight Some Text");
+                return;
             }
         }
     }
