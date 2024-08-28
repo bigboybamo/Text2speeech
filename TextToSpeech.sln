@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextToSpeech", "TextToSpeec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextToSpeechTests", "TextToSpeechTests\TextToSpeechTests.csproj", "{21624325-69E3-4686-98D6-25C73DF4AFCD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextToSpeechLogger", "TextToSpeechLogger\TextToSpeechLogger.csproj", "{4A8D01C8-2832-4C37-9B4B-1E94A177201C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{21624325-69E3-4686-98D6-25C73DF4AFCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21624325-69E3-4686-98D6-25C73DF4AFCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21624325-69E3-4686-98D6-25C73DF4AFCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A8D01C8-2832-4C37-9B4B-1E94A177201C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A8D01C8-2832-4C37-9B4B-1E94A177201C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A8D01C8-2832-4C37-9B4B-1E94A177201C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A8D01C8-2832-4C37-9B4B-1E94A177201C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

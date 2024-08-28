@@ -40,6 +40,7 @@ namespace TextToSpeechTests
         public void Should_SpeakSentence_WhenButtonIsClicked(string param)
         {
             //Arrange
+            string logFile = Path.Combine(baseDirectory, "bin\\Debug\\Log.txt");
             session.FindElementByAccessibilityId("cmbVoice").Click();
 
             session.FindElementByName("Microsoft Zira Desktop").Click();
@@ -51,7 +52,6 @@ namespace TextToSpeechTests
             session.FindElementByAccessibilityId("BtnSpeech").Click();
 
             //Assert
-            string logFile = Path.Combine(baseDirectory, "bin\\Debug\\Log.txt");
             string logContent = File.ReadAllText(logFile);
             Assert.IsTrue(logContent.Contains(param));
         }

@@ -5,19 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextToSpeech.Utilites
+namespace TextToSpeechLogger
 {
     public static class Logger
     {
-        public static void LogSpeechText(string text)
+        public static void LogSpeechText(string text, string logFilePath = null)
         {
-            string currentDirectory = Directory.GetCurrentDirectory();
-            string logFilePath = Path.Combine(currentDirectory, "Log.txt");
+            if (logFilePath == null)
+            {
+                logFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Log.txt");
+            }
 
-            // Overwrite the log file every time this method is called
             using (StreamWriter sw = new StreamWriter(logFilePath, false))
             {
                 sw.WriteLine($"{DateTime.Now}: {text}");
+                sw.Flush();
             }
         }
     }
