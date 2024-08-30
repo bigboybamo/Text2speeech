@@ -21,6 +21,8 @@ namespace TextToSpeech
         public Form1()
         {
             InitializeComponent();
+            this.Height = 600;
+            this.Width = 1000;
         }
         private ISpeechSynthesizer synthVoice;
         private bool isStopped;
