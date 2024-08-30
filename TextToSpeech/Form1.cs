@@ -21,6 +21,7 @@ namespace TextToSpeech
         public Form1()
         {
             InitializeComponent();
+            // Set the form size
             this.Height = 600;
             this.Width = 1000;
         }
