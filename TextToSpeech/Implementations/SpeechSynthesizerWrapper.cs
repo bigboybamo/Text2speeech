@@ -28,7 +28,7 @@ namespace TextToSpeech.Implementations
             _speechSynthesizer.SelectVoice(voice);
         }
 
-        public void SpeakAsync(string text)
+        public void Speak(string text)
         {
             _speechSynthesizer.SpeakAsync(text);
         }
@@ -41,6 +41,10 @@ namespace TextToSpeech.Implementations
         public void Resume()
         {
             _speechSynthesizer.Resume();
+        }
+        public void Stop()
+        {
+            _speechSynthesizer.SpeakAsyncCancelAll();
         }
 
         public SynthesizerState State => _speechSynthesizer.State;

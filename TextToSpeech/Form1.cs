@@ -14,6 +14,7 @@ using TextToSpeech.Interfaces;
 using TextToSpeech.Implementations;
 using TextToSpeechLogger;
 using static System.Net.Mime.MediaTypeNames;
+using System.Threading;
 
 namespace TextToSpeech
 {
@@ -22,26 +23,36 @@ namespace TextToSpeech
         public Form1()
         {
             InitializeComponent();
+            // Set the form size
+            this.Height = 600;
+            this.Width = 1000;
         }
         private ISpeechSynthesizer synthVoice;
         private bool isStopped;
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CheckVoiceandText();
-            string voice = cmbVoice.Text;
-            string theText = txtSpechText.Text;
-            Speak(theText, voice);
+            try
+            {
+                CheckVoiceandText();
+                string voice = cmbVoice.Text;
+                string theText = txtSpechText.Text;
+                MakeSpeech(theText, voice);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        public void Speak(string text, string voice)
+        public void MakeSpeech(string text, string voice)
         {
             InitializeSpeechSynthesizer(new SpeechSynthesizerWrapper());
             synthVoice.SetOutputToDefaultAudioDevice();
             synthVoice.SelectVoice(voice);
             synthVoice.Rate = trackBar1.Value;
             synthVoice.Volume = trackBar2.Value;
-            synthVoice.SpeakAsync(text);
+            synthVoice.Speak(text);
             isStopped = false;
             Logger.LogSpeechText(text);
         }
@@ -77,7 +88,7 @@ namespace TextToSpeech
 
         private void BtnStop_Click(object sender, EventArgs e)
         {
-            synthVoice?.Dispose();
+            synthVoice.Stop();
             isStopped = true;
         }
 
@@ -143,7 +154,7 @@ namespace TextToSpeech
                 int selectionLength = txtSpechText.SelectionLength;
                 txtSpechText.Focus();
                 txtSpechText.Select(selectionStart, selectionLength);
-                Speak(selectedText, voice);
+                MakeSpeech(selectedText, voice);
                 Logger.LogSpeechText(selectedText);
             }
         }
@@ -165,20 +176,40 @@ namespace TextToSpeech
         {
             if (cmbVoice.Text == "Select Voice" || cmbVoice.SelectedIndex == 0)
             {
-                MessageBox.Show("Please Select a Voice");
-                return;
+                throw new InvalidOperationException("Please Select a Voice");
             }
 
-            if (txtSpechText.Text.Trim() == "")
+            if (txtSpechText.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Please Enter Some Text");
-                return;
+                throw new InvalidOperationException("Please Enter Some Text");
             }
 
             if(ishighLighted && txtSpechText.SelectionLength == 0)
             {
-                MessageBox.Show("Please Highlight Some Text");
-                return;
+                throw new InvalidOperationException("Please Highlight Some Text");
+            }
+
+            if(synthVoice.State == SynthesizerState.Speaking)
+            {
+                throw new InvalidOperationException("Please Wait for the current speech to finish or Stop");
+            }
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            if (synthVoice != null)
+            {
+                synthVoice.Rate = trackBar1.Value;
+            }
+        }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            if (synthVoice != null)
+            {
+
+                synthVoice.Volume = trackBar2.Value; 
+
             }
         }
     }
