@@ -42,6 +42,10 @@ namespace TextToSpeech.Implementations
         {
             _speechSynthesizer.Resume();
         }
+        public void Stop()
+        {
+            _speechSynthesizer.SpeakAsyncCancelAll();
+        }
 
         public SynthesizerState State => _speechSynthesizer.State;
 
