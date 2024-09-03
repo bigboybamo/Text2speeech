@@ -28,7 +28,7 @@ namespace TextToSpeech.Implementations
             _speechSynthesizer.SelectVoice(voice);
         }
 
-        public void SpeakAsync(string text)
+        public void Speak(string text)
         {
             _speechSynthesizer.SpeakAsync(text);
         }

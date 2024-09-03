@@ -37,7 +37,7 @@ namespace TextToSpeech
                 CheckVoiceandText();
                 string voice = cmbVoice.Text;
                 string theText = txtSpechText.Text;
-                Speak(theText, voice);
+                MakeSpeech(theText, voice);
             }
             catch (Exception ex)
             {
@@ -45,14 +45,14 @@ namespace TextToSpeech
             }
         }
 
-        public void Speak(string text, string voice)
+        public void MakeSpeech(string text, string voice)
         {
             InitializeSpeechSynthesizer(new SpeechSynthesizerWrapper());
             synthVoice.SetOutputToDefaultAudioDevice();
             synthVoice.SelectVoice(voice);
             synthVoice.Rate = trackBar1.Value;
             synthVoice.Volume = trackBar2.Value;
-            synthVoice.SpeakAsync(text);
+            synthVoice.Speak(text);
             isStopped = false;
             Logger.LogSpeechText(text);
         }
@@ -154,7 +154,7 @@ namespace TextToSpeech
                 int selectionLength = txtSpechText.SelectionLength;
                 txtSpechText.Focus();
                 txtSpechText.Select(selectionStart, selectionLength);
-                Speak(selectedText, voice);
+                MakeSpeech(selectedText, voice);
                 Logger.LogSpeechText(selectedText);
             }
         }
@@ -199,7 +199,7 @@ namespace TextToSpeech
         {
             if (synthVoice != null)
             {
-                synthVoice.Rate = trackBar1.Value; 
+                synthVoice.Rate = trackBar1.Value;
             }
         }
 
@@ -207,7 +207,9 @@ namespace TextToSpeech
         {
             if (synthVoice != null)
             {
+
                 synthVoice.Volume = trackBar2.Value; 
+
             }
         }
     }

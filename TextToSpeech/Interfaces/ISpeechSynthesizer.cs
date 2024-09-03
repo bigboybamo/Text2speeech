@@ -11,7 +11,7 @@ namespace TextToSpeech.Interfaces
     {
         void SetOutputToDefaultAudioDevice();
         void SelectVoice(string voice);
-        void SpeakAsync(string text);
+        void Speak(string text);
         void Pause();
         void Resume();
 
