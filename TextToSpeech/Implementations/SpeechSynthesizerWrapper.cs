@@ -16,6 +16,8 @@ namespace TextToSpeech.Implementations
         public SpeechSynthesizerWrapper()
         {
             _speechSynthesizer = new SpeechSynthesizer();
+            _speechSynthesizer.SpeakProgress += OnSpeakProgress;
+            _speechSynthesizer.SpeakCompleted += OnSpeakCompleted;
         }
 
         public void SetOutputToDefaultAudioDevice()
@@ -64,6 +66,44 @@ namespace TextToSpeech.Implementations
         {
             get => _speechSynthesizer.Volume;
             set => _speechSynthesizer.Volume = value;
+        }
+
+        public int CurrentPosition { get; set; }
+
+        public void OnSpeakProgress(object sender, SpeakProgressEventArgs e)
+        {
+            CurrentPosition = e.CharacterPosition;
+        }
+
+        public void OnSpeakCompleted(object sender, SpeakCompletedEventArgs e)
+        {
+            Console.WriteLine("Speech completed.");
+        }
+
+        public void RestartFromCurrentPosition(string fullText)
+        {
+            // Stop any ongoing speech
+            _speechSynthesizer.SpeakAsyncCancelAll();
+
+            // Get the remaining text from the current position onwards
+            string remainingText = GetRemainingTextFromCurrentPosition(fullText);
+
+            if (!string.IsNullOrEmpty(remainingText))
+            {
+                Console.WriteLine($"Restarting from position: {CurrentPosition}");
+                _speechSynthesizer.SpeakAsync(remainingText);
+            }
+        }
+
+        private string GetRemainingTextFromCurrentPosition(string fullText)
+        {
+            if (CurrentPosition >= 0 && CurrentPosition < fullText.Length)
+            {
+                // Return the substring from the current position onwards
+                return fullText.Substring(CurrentPosition);
+            }
+
+            return string.Empty;
         }
 
         public void Dispose()

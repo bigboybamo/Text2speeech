@@ -207,6 +207,7 @@ namespace TextToSpeech
             if (synthVoice != null)
             {
                 synthVoice.Rate = trackBar1.Value;
+                synthVoice.RestartFromCurrentPosition(txtSpechText.Text);
             }
         }
 
@@ -214,9 +215,8 @@ namespace TextToSpeech
         {
             if (synthVoice != null)
             {
-
-                synthVoice.Volume = trackBar2.Value; 
-
+                synthVoice.Volume = trackBar2.Value;
+                synthVoice.RestartFromCurrentPosition(txtSpechText.Text);
             }
         }
     }
