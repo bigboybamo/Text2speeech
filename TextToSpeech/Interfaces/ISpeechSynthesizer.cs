@@ -16,11 +16,17 @@ namespace TextToSpeech.Interfaces
         void Resume();
 
         void Stop();
+        void OnSpeakProgress(object sender, SpeakProgressEventArgs e);
+        void OnSpeakCompleted(object sender, SpeakCompletedEventArgs e);
+
+        void RestartFromCurrentPosition(string fullText);
         SynthesizerState State { get; }
 
         IEnumerable<InstalledVoice> GetInstalledVoices();
 
         int Rate { get; set; }
         int Volume { get; set; }
+
+        int CurrentPosition { get; set; }
     }
 }

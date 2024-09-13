@@ -145,17 +145,24 @@ namespace TextToSpeech
 
         private void BtnPronounce_Click(object sender, EventArgs e)
         {
-            CheckVoiceandText(true);
-            string voice = cmbVoice.Text;
-            if (txtSpechText.SelectionLength > 0)
+            try
             {
-                string selectedText = txtSpechText.SelectedText;
-                int selectionStart = txtSpechText.SelectionStart;
-                int selectionLength = txtSpechText.SelectionLength;
-                txtSpechText.Focus();
-                txtSpechText.Select(selectionStart, selectionLength);
-                MakeSpeech(selectedText, voice);
-                Logger.LogSpeechText(selectedText);
+                CheckVoiceandText(true);
+                string voice = cmbVoice.Text;
+                if (txtSpechText.SelectionLength > 0)
+                {
+                    string selectedText = txtSpechText.SelectedText;
+                    int selectionStart = txtSpechText.SelectionStart;
+                    int selectionLength = txtSpechText.SelectionLength;
+                    txtSpechText.Focus();
+                    txtSpechText.Select(selectionStart, selectionLength);
+                    MakeSpeech(selectedText, voice);
+                    Logger.LogSpeechText(selectedText);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -200,6 +207,7 @@ namespace TextToSpeech
             if (synthVoice != null)
             {
                 synthVoice.Rate = trackBar1.Value;
+                synthVoice.RestartFromCurrentPosition(txtSpechText.Text);
             }
         }
 
@@ -207,9 +215,8 @@ namespace TextToSpeech
         {
             if (synthVoice != null)
             {
-
-                synthVoice.Volume = trackBar2.Value; 
-
+                synthVoice.Volume = trackBar2.Value;
+                synthVoice.RestartFromCurrentPosition(txtSpechText.Text);
             }
         }
     }
