@@ -1,0 +1,7 @@
+obj\Debug\Product.wixobj
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechInstaller\bin\Debug\cab1.cab
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechInstaller\bin\Debug\TextToSpeechInstaller.msi
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechInstaller\bin\Debug\TextToSpeechInstaller.wixpdb
+obj\Debug\TextToSpeechInstaller.wixproj.BindContentsFileListnull.txt
+obj\Debug\TextToSpeechInstaller.wixproj.BindOutputsFileListnull.txt
+obj\Debug\TextToSpeechInstaller.wixproj.BindBuiltOutputsFileListnull.txt

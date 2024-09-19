@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="TextToSpeechInstaller" Language="1033" Version="1.0.0.0" Manufacturer="Olabamiji" UpgradeCode="4547332d-e749-4802-be14-1c9e7ff2548e">
+		<Package InstallerVersion="500" Compressed="yes" InstallScope="perMachine" />
+
+		<!-- Handle upgrades between versions -->
+		<!--<Upgrade Id="PUT-GUID-HERE">
+			<UpgradeVersion Minimum="1.0.0.0" Maximum="2.0.0.0" Property="OLDERVERSIONBEINGUPGRADED" IncludeMinimum="yes" IncludeMaximum="no" />
+		</Upgrade>-->
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of TextToSpeech is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="TextToSpeech" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="TextToSpeech" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<Component Id = "TextToSpeech" Guid= "f843d7bc-4878-4736-98ab-8509acb02dea">
+				<File Id = "TextToSpeech" Name= "TextToSpeech.exe" Source= "..\TextToSpeech\bin\Debug\">
+				</File>
+			</Component>
+			<Component Id="TextToSpeechLoggerComponent" Guid="66494e37-b60c-4e87-873e-c255b1194b20">
+				<File Id="TextToSpeechLogger" Name="TextToSpeechLogger.dll" Source="..\TextToSpeechLogger\bin\Debug\" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>

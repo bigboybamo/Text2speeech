@@ -11,9 +11,17 @@ namespace TextToSpeechLogger
     {
         public static void LogSpeechText(string text, string logFilePath = null)
         {
+
             if (logFilePath == null)
             {
-                logFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Log.txt");
+                string appDataFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "TextToSpeech");
+
+                if (!Directory.Exists(appDataFolder))
+                {
+                    Directory.CreateDirectory(appDataFolder);
+                }
+
+                logFilePath = Path.Combine(appDataFolder, "Log.txt");
             }
 
             using (StreamWriter sw = new StreamWriter(logFilePath, false))
