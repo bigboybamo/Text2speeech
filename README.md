@@ -7,3 +7,8 @@ A windows forms text to speech program
 
 
 ![alt text](https://github.com/bigboybamo/Text2speeech/blob/main/TextToSpeech/images/text_speech.JPG)
+
+## Features
+* Convert written text to spoken sentences.
+* Choose from different voices.
+* Open and read documents. Supported file types include `.txt`, `.docx`, and `.pdf`
