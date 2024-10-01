@@ -12,3 +12,15 @@ A windows forms text to speech program
 * Convert written text to spoken sentences.
 * Choose from different voices.
 * Open and read documents. Supported file types include `.txt`, `.docx`, and `.pdf`
+
+## Machine Setup
+* Required Workloads:
+  * Visual Studio 
+  * .NET Desktop Development
+  * WiX v3 Toolset
+  * Microsoft .NET Framework 4.7.2
+
+## Building and running the app from VS
+1. Right click on the `TextToSpeech` project you wish to run and select 'Set as startup project'.
+2. <kbd>F5</kbd>.
+
