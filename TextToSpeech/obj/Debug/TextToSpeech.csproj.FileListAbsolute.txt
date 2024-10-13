@@ -33,3 +33,4 @@ C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\obj\Debug\TextToSpeech.For
 C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\bin\Debug\App.config
 C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\bin\Debug\TextToSpeechLogger.dll
 C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\bin\Debug\TextToSpeechLogger.pdb
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\bin\Debug\images\299033_microphone_icon.ico
