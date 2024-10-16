@@ -1,0 +1,6 @@
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechLogger\bin\Release\TextToSpeechLogger.dll
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechLogger\bin\Release\TextToSpeechLogger.pdb
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechLogger\obj\Release\TextToSpeechLogger.csproj.AssemblyReference.cache
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechLogger\obj\Release\TextToSpeechLogger.csproj.CoreCompileInputs.cache
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechLogger\obj\Release\TextToSpeechLogger.dll
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechLogger\obj\Release\TextToSpeechLogger.pdb

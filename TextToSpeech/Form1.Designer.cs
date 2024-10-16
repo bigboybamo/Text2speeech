@@ -57,6 +57,7 @@ namespace TextToSpeech
             // 
             // BtnSpeech
             // 
+            this.BtnSpeech.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnSpeech.Location = new System.Drawing.Point(76, 13);
             this.BtnSpeech.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnSpeech.Name = "BtnSpeech";
@@ -68,6 +69,7 @@ namespace TextToSpeech
             // 
             // BtnOpenFile
             // 
+            this.BtnOpenFile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnOpenFile.Location = new System.Drawing.Point(76, 97);
             this.BtnOpenFile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnOpenFile.Name = "BtnOpenFile";
@@ -79,6 +81,7 @@ namespace TextToSpeech
             // 
             // BtnPause
             // 
+            this.BtnPause.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnPause.Location = new System.Drawing.Point(464, 97);
             this.BtnPause.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnPause.Name = "BtnPause";
@@ -91,6 +94,7 @@ namespace TextToSpeech
             // 
             // BtnResume
             // 
+            this.BtnResume.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnResume.Location = new System.Drawing.Point(649, 97);
             this.BtnResume.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnResume.Name = "BtnResume";
@@ -102,6 +106,7 @@ namespace TextToSpeech
             // 
             // BtnStop
             // 
+            this.BtnStop.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnStop.Location = new System.Drawing.Point(832, 97);
             this.BtnStop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnStop.Name = "BtnStop";
@@ -235,6 +240,7 @@ namespace TextToSpeech
             // 
             // BtnPronounce
             // 
+            this.BtnPronounce.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnPronounce.Location = new System.Drawing.Point(1113, 702);
             this.BtnPronounce.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnPronounce.Name = "BtnPronounce";
@@ -263,6 +269,7 @@ namespace TextToSpeech
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1449, 851);
             this.Controls.Add(this.cmbVoice);
             this.Controls.Add(this.BtnPronounce);
@@ -274,6 +281,7 @@ namespace TextToSpeech
             this.Controls.Add(this.BtnPause);
             this.Controls.Add(this.BtnOpenFile);
             this.Controls.Add(this.BtnSpeech);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
