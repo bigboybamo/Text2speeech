@@ -15,3 +15,6 @@ C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\obj\Release\TextToSpeech.c
 C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\obj\Release\TextToSp.861EFCAC.Up2Date
 C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\obj\Release\TextToSpeech.exe
 C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\obj\Release\TextToSpeech.pdb
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\bin\Release\images\299033_microphone_icon.ico
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\bin\Release\TextToSpeechLogger.dll
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeech\bin\Release\TextToSpeechLogger.pdb

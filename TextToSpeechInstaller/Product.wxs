@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="TextToSpeech" Language="1033" Version="1.0.0.0" Manufacturer="Olabamiji" UpgradeCode="4547332d-e749-4802-be14-1c9e7ff2548e">
+	<Product Id="*" Name="TextToSpeech" Language="1033" Version="1.0.0.1" Manufacturer="Olabamiji" UpgradeCode="4547332d-e749-4802-be14-1c9e7ff2548e">
 		<Package InstallerVersion="500" Compressed="yes" InstallScope="perMachine" />
 
 		<!-- Handle upgrades between versions -->
@@ -58,15 +58,14 @@
 			</Component>
 			</DirectoryRef>
 	</Fragment>
-
 	<Fragment>
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-			<Component Id = "TextToSpeech" Guid= "f843d7bc-4878-4736-98ab-8509acb02dea">
-				<File Id = "TextToSpeech" Name= "TextToSpeech.exe" Source= "..\TextToSpeech\bin\Debug\">
+			<Component Id = "TextToSpeech" Guid= "632364a3-1dbe-4c8d-a970-a431c981fb91">
+				<File Id = "TextToSpeech" Name= "TextToSpeech.exe" Source= "..\TextToSpeech\bin\Release\">
 				</File>
 			</Component>
 			<Component Id="TextToSpeechLoggerComponent" Guid="66494e37-b60c-4e87-873e-c255b1194b20">
-				<File Id="TextToSpeechLogger" Name="TextToSpeechLogger.dll" Source="..\TextToSpeechLogger\bin\Debug\" KeyPath="yes" />
+				<File Id="TextToSpeechLogger" Name="TextToSpeechLogger.dll" Source="..\TextToSpeechLogger\bin\Release\" KeyPath="yes" />
 			</Component>
 		</ComponentGroup>
 	</Fragment>
