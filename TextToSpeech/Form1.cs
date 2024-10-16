@@ -204,7 +204,7 @@ namespace TextToSpeech
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            if (synthVoice != null)
+            if (synthVoice != null && synthVoice.State == SynthesizerState.Speaking)
             {
                 synthVoice.Rate = trackBar1.Value;
                 synthVoice.RestartFromCurrentPosition(txtSpechText.Text);
@@ -213,7 +213,7 @@ namespace TextToSpeech
 
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
-            if (synthVoice != null)
+            if (synthVoice != null && synthVoice.State == SynthesizerState.Speaking)
             {
                 synthVoice.Volume = trackBar2.Value;
                 synthVoice.RestartFromCurrentPosition(txtSpechText.Text);
