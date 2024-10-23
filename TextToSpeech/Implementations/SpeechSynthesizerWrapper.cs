@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Speech.Synthesis;
 using System.Text;
 using System.Threading.Tasks;
 using TextToSpeech.Interfaces;
+using static System.Net.WebRequestMethods;
 
 namespace TextToSpeech.Implementations
 {
@@ -123,6 +125,20 @@ namespace TextToSpeech.Implementations
             }
 
             _disposed = true;
+        }
+
+        public void SaveAudioFile(string fileName)
+        {
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var textToSpeechPath = Path.Combine(documentsPath, "TextToSpeechAudio");
+            var outputPath = Path.Combine(textToSpeechPath, $"{fileName}");
+
+            if (!Directory.Exists(textToSpeechPath))
+            {
+                Directory.CreateDirectory(textToSpeechPath);
+            }
+
+            _speechSynthesizer.SetOutputToWaveFile(outputPath);
         }
 
         ~SpeechSynthesizerWrapper()

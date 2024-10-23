@@ -48,10 +48,16 @@ namespace TextToSpeech
         public void MakeSpeech(string text, string voice)
         {
             InitializeSpeechSynthesizer(new SpeechSynthesizerWrapper());
-            synthVoice.SetOutputToDefaultAudioDevice();
+
+            if (SaveAudio.Checked)
+            {
+                var fileName = String.Format("audio_{0}.wav", DateTime.Now.ToString("yyyyMMddHHmmss"));
+                synthVoice.SaveAudioFile(fileName);
+            }
             synthVoice.SelectVoice(voice);
             synthVoice.Rate = trackBar1.Value;
             synthVoice.Volume = trackBar2.Value;
+            synthVoice.SetOutputToDefaultAudioDevice();
             synthVoice.Speak(text);
             isStopped = false;
             Logger.LogSpeechText(text);

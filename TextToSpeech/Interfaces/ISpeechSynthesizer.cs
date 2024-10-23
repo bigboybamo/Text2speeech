@@ -19,6 +19,8 @@ namespace TextToSpeech.Interfaces
         void OnSpeakProgress(object sender, SpeakProgressEventArgs e);
         void OnSpeakCompleted(object sender, SpeakCompletedEventArgs e);
 
+        void SaveAudioFile(string fileName);
+
         void RestartFromCurrentPosition(string fullText);
         SynthesizerState State { get; }
 

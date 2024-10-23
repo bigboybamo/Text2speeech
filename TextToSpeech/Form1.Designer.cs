@@ -49,6 +49,7 @@ namespace TextToSpeech
             this.BtnPronounce = new System.Windows.Forms.Button();
             this.cmbVoice = new System.Windows.Forms.ComboBox();
             this.ofd1 = new System.Windows.Forms.OpenFileDialog();
+            this.SaveAudio = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -70,7 +71,7 @@ namespace TextToSpeech
             // BtnOpenFile
             // 
             this.BtnOpenFile.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnOpenFile.Location = new System.Drawing.Point(76, 97);
+            this.BtnOpenFile.Location = new System.Drawing.Point(76, 138);
             this.BtnOpenFile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnOpenFile.Name = "BtnOpenFile";
             this.BtnOpenFile.Size = new System.Drawing.Size(140, 57);
@@ -82,7 +83,7 @@ namespace TextToSpeech
             // BtnPause
             // 
             this.BtnPause.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnPause.Location = new System.Drawing.Point(464, 97);
+            this.BtnPause.Location = new System.Drawing.Point(464, 138);
             this.BtnPause.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnPause.Name = "BtnPause";
             this.BtnPause.Size = new System.Drawing.Size(128, 57);
@@ -95,7 +96,7 @@ namespace TextToSpeech
             // BtnResume
             // 
             this.BtnResume.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnResume.Location = new System.Drawing.Point(649, 97);
+            this.BtnResume.Location = new System.Drawing.Point(651, 138);
             this.BtnResume.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnResume.Name = "BtnResume";
             this.BtnResume.Size = new System.Drawing.Size(134, 57);
@@ -107,7 +108,7 @@ namespace TextToSpeech
             // BtnStop
             // 
             this.BtnStop.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnStop.Location = new System.Drawing.Point(832, 97);
+            this.BtnStop.Location = new System.Drawing.Point(832, 138);
             this.BtnStop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnStop.Name = "BtnStop";
             this.BtnStop.Size = new System.Drawing.Size(112, 57);
@@ -265,12 +266,25 @@ namespace TextToSpeech
             // 
             this.ofd1.FileName = "openFileDialog1";
             // 
+            // SaveAudio
+            // 
+            this.SaveAudio.AutoSize = true;
+            this.SaveAudio.Checked = true;
+            this.SaveAudio.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.SaveAudio.Location = new System.Drawing.Point(76, 91);
+            this.SaveAudio.Name = "SaveAudio";
+            this.SaveAudio.Size = new System.Drawing.Size(145, 24);
+            this.SaveAudio.TabIndex = 11;
+            this.SaveAudio.Text = "Save Audio File";
+            this.SaveAudio.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1449, 851);
+            this.Controls.Add(this.SaveAudio);
             this.Controls.Add(this.cmbVoice);
             this.Controls.Add(this.BtnPronounce);
             this.Controls.Add(this.txtSpechText);
@@ -320,6 +334,7 @@ namespace TextToSpeech
         private System.Windows.Forms.Button BtnPronounce;
         private System.Windows.Forms.ComboBox cmbVoice;
         private System.Windows.Forms.OpenFileDialog ofd1;
+        private System.Windows.Forms.CheckBox SaveAudio;
     }
 }
 
