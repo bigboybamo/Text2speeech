@@ -27,6 +27,11 @@ namespace TextToSpeech.Implementations
             _speechSynthesizer.SetOutputToDefaultAudioDevice();
         }
 
+        public void SetOutputToWaveFile(string filePath)
+        {
+            _speechSynthesizer.SetOutputToWaveFile(filePath);
+        }
+
         public void SelectVoice(string voice)
         {
             _speechSynthesizer.SelectVoice(voice);
@@ -71,6 +76,9 @@ namespace TextToSpeech.Implementations
         }
 
         public int CurrentPosition { get; set; }
+        public string text { get; set; }
+
+        public bool ShouldSaveAudio { get; set; } = false;
 
         public void OnSpeakProgress(object sender, SpeakProgressEventArgs e)
         {
@@ -80,6 +88,10 @@ namespace TextToSpeech.Implementations
         public void OnSpeakCompleted(object sender, SpeakCompletedEventArgs e)
         {
             Console.WriteLine("Speech completed.");
+            if (ShouldSaveAudio)
+            {
+                SaveAudioFile();
+            }
         }
 
         public void RestartFromCurrentPosition(string fullText)
@@ -127,11 +139,12 @@ namespace TextToSpeech.Implementations
             _disposed = true;
         }
 
-        public void SaveAudioFile(string fileName)
+        public void SaveAudioFile()
         {
+            var fileName = String.Format("audio_{0}", DateTime.Now.ToString("yyyyMMddHHmmss"));
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             var textToSpeechPath = Path.Combine(documentsPath, "TextToSpeechAudio");
-            var outputPath = Path.Combine(textToSpeechPath, $"{fileName}");
+            var outputPath = Path.Combine(textToSpeechPath, $"{fileName}.wav");
 
             if (!Directory.Exists(textToSpeechPath))
             {
@@ -139,6 +152,7 @@ namespace TextToSpeech.Implementations
             }
 
             _speechSynthesizer.SetOutputToWaveFile(outputPath);
+            _speechSynthesizer.Speak(text);
         }
 
         ~SpeechSynthesizerWrapper()

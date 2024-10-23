@@ -9,7 +9,11 @@ namespace TextToSpeech.Interfaces
 {
     public interface ISpeechSynthesizer: IDisposable
     {
+        string text { get; set; }
         void SetOutputToDefaultAudioDevice();
+
+        void SetOutputToWaveFile(string filePath);
+
         void SelectVoice(string voice);
         void Speak(string text);
         void Pause();
@@ -19,7 +23,7 @@ namespace TextToSpeech.Interfaces
         void OnSpeakProgress(object sender, SpeakProgressEventArgs e);
         void OnSpeakCompleted(object sender, SpeakCompletedEventArgs e);
 
-        void SaveAudioFile(string fileName);
+        void SaveAudioFile();
 
         void RestartFromCurrentPosition(string fullText);
         SynthesizerState State { get; }
@@ -30,5 +34,7 @@ namespace TextToSpeech.Interfaces
         int Volume { get; set; }
 
         int CurrentPosition { get; set; }
+
+        bool ShouldSaveAudio { get; set; }
     }
 }

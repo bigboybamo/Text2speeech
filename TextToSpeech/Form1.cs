@@ -36,8 +36,8 @@ namespace TextToSpeech
             {
                 CheckVoiceandText();
                 string voice = cmbVoice.Text;
-                string theText = txtSpechText.Text;
-                MakeSpeech(theText, voice);
+                synthVoice.text = txtSpechText.Text;
+                MakeSpeech(voice);
             }
             catch (Exception ex)
             {
@@ -45,22 +45,22 @@ namespace TextToSpeech
             }
         }
 
-        public void MakeSpeech(string text, string voice)
+        public void MakeSpeech(string voice)
         {
             InitializeSpeechSynthesizer(new SpeechSynthesizerWrapper());
-
-            if (SaveAudio.Checked)
-            {
-                var fileName = String.Format("audio_{0}.wav", DateTime.Now.ToString("yyyyMMddHHmmss"));
-                synthVoice.SaveAudioFile(fileName);
-            }
+            synthVoice.text = txtSpechText.Text;
             synthVoice.SelectVoice(voice);
             synthVoice.Rate = trackBar1.Value;
             synthVoice.Volume = trackBar2.Value;
             synthVoice.SetOutputToDefaultAudioDevice();
-            synthVoice.Speak(text);
+            synthVoice.Speak(synthVoice.text);
+
+            if (SaveAudio.Checked)
+            {
+                synthVoice.ShouldSaveAudio = true;
+            }
             isStopped = false;
-            Logger.LogSpeechText(text);
+            Logger.LogSpeechText(synthVoice.text);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -157,13 +157,13 @@ namespace TextToSpeech
                 string voice = cmbVoice.Text;
                 if (txtSpechText.SelectionLength > 0)
                 {
-                    string selectedText = txtSpechText.SelectedText;
+                    synthVoice.text = txtSpechText.SelectedText;
                     int selectionStart = txtSpechText.SelectionStart;
                     int selectionLength = txtSpechText.SelectionLength;
                     txtSpechText.Focus();
                     txtSpechText.Select(selectionStart, selectionLength);
-                    MakeSpeech(selectedText, voice);
-                    Logger.LogSpeechText(selectedText);
+                    MakeSpeech(voice);
+                    Logger.LogSpeechText(synthVoice.text);
                 }
             }
             catch (Exception ex)
