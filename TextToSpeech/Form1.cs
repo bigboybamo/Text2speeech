@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Speech.Synthesis;
@@ -13,8 +6,6 @@ using GemBox.Pdf;
 using TextToSpeech.Interfaces;
 using TextToSpeech.Implementations;
 using TextToSpeechLogger;
-using static System.Net.Mime.MediaTypeNames;
-using System.Threading;
 
 namespace TextToSpeech
 {
@@ -27,6 +18,7 @@ namespace TextToSpeech
             this.Height = 600;
             this.Width = 1000;
         }
+
         private ISpeechSynthesizer synthVoice;
         private bool isStopped;
 
@@ -35,9 +27,9 @@ namespace TextToSpeech
             try
             {
                 CheckVoiceandText();
-                string voice = cmbVoice.Text;
-                synthVoice.text = txtSpechText.Text;
-                MakeSpeech(voice);
+                var voice = cmbVoice.Text;
+                var text = txtSpechText.Text;
+                MakeSpeech(text, voice);
             }
             catch (Exception ex)
             {
@@ -45,10 +37,10 @@ namespace TextToSpeech
             }
         }
 
-        public void MakeSpeech(string voice)
+        public void MakeSpeech(string text, string voice)
         {
             InitializeSpeechSynthesizer(new SpeechSynthesizerWrapper());
-            synthVoice.text = txtSpechText.Text;
+            synthVoice.text = text;
             synthVoice.SelectVoice(voice);
             synthVoice.Rate = trackBar1.Value;
             synthVoice.Volume = trackBar2.Value;
@@ -96,6 +88,7 @@ namespace TextToSpeech
         {
             synthVoice.Stop();
             isStopped = true;
+            synthVoice.IsSpeakingFinished = false;
         }
 
         private void BtnOpenFile_Click(object sender, EventArgs e)
@@ -157,12 +150,12 @@ namespace TextToSpeech
                 string voice = cmbVoice.Text;
                 if (txtSpechText.SelectionLength > 0)
                 {
-                    synthVoice.text = txtSpechText.SelectedText;
+                    var text = txtSpechText.SelectedText;
                     int selectionStart = txtSpechText.SelectionStart;
                     int selectionLength = txtSpechText.SelectionLength;
                     txtSpechText.Focus();
                     txtSpechText.Select(selectionStart, selectionLength);
-                    MakeSpeech(voice);
+                    MakeSpeech(text, voice);
                     Logger.LogSpeechText(synthVoice.text);
                 }
             }
@@ -197,12 +190,12 @@ namespace TextToSpeech
                 throw new InvalidOperationException("Please Enter Some Text");
             }
 
-            if(ishighLighted && txtSpechText.SelectionLength == 0)
+            if (ishighLighted && txtSpechText.SelectionLength == 0)
             {
                 throw new InvalidOperationException("Please Highlight Some Text");
             }
 
-            if(synthVoice.State == SynthesizerState.Speaking)
+            if (synthVoice.State == SynthesizerState.Speaking)
             {
                 throw new InvalidOperationException("Please Wait for the current speech to finish or Stop");
             }

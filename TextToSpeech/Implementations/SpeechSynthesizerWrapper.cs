@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Speech.Synthesis;
-using System.Text;
-using System.Threading.Tasks;
 using TextToSpeech.Interfaces;
-using static System.Net.WebRequestMethods;
 
 namespace TextToSpeech.Implementations
 {
@@ -80,6 +76,8 @@ namespace TextToSpeech.Implementations
 
         public bool ShouldSaveAudio { get; set; } = false;
 
+        public bool IsSpeakingFinished { get; set; } = true;
+
         public void OnSpeakProgress(object sender, SpeakProgressEventArgs e)
         {
             CurrentPosition = e.CharacterPosition;
@@ -88,7 +86,7 @@ namespace TextToSpeech.Implementations
         public void OnSpeakCompleted(object sender, SpeakCompletedEventArgs e)
         {
             Console.WriteLine("Speech completed.");
-            if (ShouldSaveAudio)
+            if (ShouldSaveAudio && IsSpeakingFinished)
             {
                 SaveAudioFile();
             }
@@ -96,6 +94,7 @@ namespace TextToSpeech.Implementations
 
         public void RestartFromCurrentPosition(string fullText)
         {
+            IsSpeakingFinished = false;
             // Stop any ongoing speech
             _speechSynthesizer.SpeakAsyncCancelAll();
 
@@ -153,6 +152,7 @@ namespace TextToSpeech.Implementations
 
             _speechSynthesizer.SetOutputToWaveFile(outputPath);
             _speechSynthesizer.Speak(text);
+            _speechSynthesizer.SetOutputToNull();
         }
 
         ~SpeechSynthesizerWrapper()

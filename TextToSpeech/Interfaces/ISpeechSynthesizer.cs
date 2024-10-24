@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Speech.Synthesis;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TextToSpeech.Interfaces
 {
@@ -36,5 +33,7 @@ namespace TextToSpeech.Interfaces
         int CurrentPosition { get; set; }
 
         bool ShouldSaveAudio { get; set; }
+
+        bool IsSpeakingFinished { get; set; }
     }
 }
