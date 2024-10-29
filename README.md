@@ -12,6 +12,7 @@ A windows forms text to speech program
 * Convert written text to spoken sentences.
 * Choose from different voices.
 * Open and read documents. Supported file types include `.txt`, `.docx`, and `.pdf`
+* Save audio files to play later.
 
 ## Machine Setup
 * Required Workloads:
