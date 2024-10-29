@@ -1,12 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
-using OpenQA.Selenium.Support.UI;
 using System;
 using System.Configuration;
 using System.IO;
-using System.Speech.Recognition;
-using System.Threading;
 
 namespace TextToSpeechTests
 {

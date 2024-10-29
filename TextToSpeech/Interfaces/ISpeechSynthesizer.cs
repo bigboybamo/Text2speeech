@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Speech.Synthesis;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TextToSpeech.Interfaces
 {
     public interface ISpeechSynthesizer: IDisposable
     {
+        string text { get; set; }
         void SetOutputToDefaultAudioDevice();
+
+        void SetOutputToWaveFile(string filePath);
+
         void SelectVoice(string voice);
         void Speak(string text);
         void Pause();
@@ -18,6 +19,8 @@ namespace TextToSpeech.Interfaces
         void Stop();
         void OnSpeakProgress(object sender, SpeakProgressEventArgs e);
         void OnSpeakCompleted(object sender, SpeakCompletedEventArgs e);
+
+        void SaveAudioFile();
 
         void RestartFromCurrentPosition(string fullText);
         SynthesizerState State { get; }
@@ -28,5 +31,9 @@ namespace TextToSpeech.Interfaces
         int Volume { get; set; }
 
         int CurrentPosition { get; set; }
+
+        bool ShouldSaveAudio { get; set; }
+
+        bool IsSpeakingFinished { get; set; }
     }
 }

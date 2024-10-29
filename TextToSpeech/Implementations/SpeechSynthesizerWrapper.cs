@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Speech.Synthesis;
-using System.Text;
-using System.Threading.Tasks;
 using TextToSpeech.Interfaces;
 
 namespace TextToSpeech.Implementations
@@ -23,6 +21,11 @@ namespace TextToSpeech.Implementations
         public void SetOutputToDefaultAudioDevice()
         {
             _speechSynthesizer.SetOutputToDefaultAudioDevice();
+        }
+
+        public void SetOutputToWaveFile(string filePath)
+        {
+            _speechSynthesizer.SetOutputToWaveFile(filePath);
         }
 
         public void SelectVoice(string voice)
@@ -69,6 +72,11 @@ namespace TextToSpeech.Implementations
         }
 
         public int CurrentPosition { get; set; }
+        public string text { get; set; }
+
+        public bool ShouldSaveAudio { get; set; } = false;
+
+        public bool IsSpeakingFinished { get; set; } = true;
 
         public void OnSpeakProgress(object sender, SpeakProgressEventArgs e)
         {
@@ -78,10 +86,15 @@ namespace TextToSpeech.Implementations
         public void OnSpeakCompleted(object sender, SpeakCompletedEventArgs e)
         {
             Console.WriteLine("Speech completed.");
+            if (ShouldSaveAudio && IsSpeakingFinished)
+            {
+                SaveAudioFile();
+            }
         }
 
         public void RestartFromCurrentPosition(string fullText)
         {
+            IsSpeakingFinished = false;
             // Stop any ongoing speech
             _speechSynthesizer.SpeakAsyncCancelAll();
 
@@ -123,6 +136,23 @@ namespace TextToSpeech.Implementations
             }
 
             _disposed = true;
+        }
+
+        public void SaveAudioFile()
+        {
+            var fileName = String.Format("audio_{0}", DateTime.Now.ToString("yyyyMMddHHmmss"));
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var textToSpeechPath = Path.Combine(documentsPath, "TextToSpeechAudio");
+            var outputPath = Path.Combine(textToSpeechPath, $"{fileName}.wav");
+
+            if (!Directory.Exists(textToSpeechPath))
+            {
+                Directory.CreateDirectory(textToSpeechPath);
+            }
+
+            _speechSynthesizer.SetOutputToWaveFile(outputPath);
+            _speechSynthesizer.Speak(text);
+            _speechSynthesizer.SetOutputToNull();
         }
 
         ~SpeechSynthesizerWrapper()
