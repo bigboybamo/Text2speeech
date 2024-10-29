@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="TextToSpeech" Language="1033" Version="1.0.0.1" Manufacturer="Olabamiji" UpgradeCode="4547332d-e749-4802-be14-1c9e7ff2548e">
+	<Product Id="*" Name="TextToSpeech" Language="1033" Version="2.0.0.0" Manufacturer="Olabamiji" UpgradeCode="4547332d-e749-4802-be14-1c9e7ff2548e">
 		<Package InstallerVersion="500" Compressed="yes" InstallScope="perMachine" />
 
 		<!-- Handle upgrades between versions -->
@@ -34,7 +34,7 @@
      <Property Id="ARPNOMODIFY" Value="1" />
 </UI>
 <UIRef Id="WixUI_Common" />
-		<MajorUpgrade DowngradeErrorMessage="A newer version of TextToSpeech is already installed." />
+		<MajorUpgrade DowngradeErrorMessage="A newer version of TextToSpeech is already installed." AllowDowngrades="no" />
 		<MediaTemplate EmbedCab ="yes"/>
 
 		<Feature Id="ProductFeature" Title="TextToSpeech" Level="1">
