@@ -1,72 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="TextToSpeech" Language="1033" Version="2.0.0.0" Manufacturer="Olabamiji" UpgradeCode="4547332d-e749-4802-be14-1c9e7ff2548e">
-		<Package InstallerVersion="500" Compressed="yes" InstallScope="perMachine" />
 
-		<!-- Handle upgrades between versions -->
-		<Upgrade Id="f4b1adbb-5b46-43f3-95f9-9ff2564da80b">
-			<UpgradeVersion Minimum="1.0.0.0" Maximum="2.0.0.0" Property="OLDERVERSIONBEINGUPGRADED" IncludeMinimum="yes" IncludeMaximum="no" />
-		</Upgrade>
+	<?define VersionNumber="2.0.0.1" ?>
 
-		<!-- Maintenance Dialog -->
-<UI Id="WixUI_Minimal">
-      <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
-      <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="12" />
-      <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes" />
-      <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
-      <Property Id="WixUI_Mode" Value="Minimal" />
-      <DialogRef Id="ErrorDlg" />
-      <DialogRef Id="FatalError" />
-      <DialogRef Id="FilesInUse" />
-      <DialogRef Id="MsiRMFilesInUse" />
-      <DialogRef Id="PrepareDlg" />
-      <DialogRef Id="ProgressDlg" />
-      <DialogRef Id="ResumeDlg" />
-      <DialogRef Id="UserExit" />
-      <DialogRef Id="WelcomeDlg" />
-      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="PrepareDlg">1</Publish>
-     <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
-     <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg">1</Publish>
-     <Publish Dialog="MaintenanceWelcomeDlg" Control="Next" Event="NewDialog" Value="MaintenanceTypeDlg">1</Publish>
-     <Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
-     <Publish Dialog="MaintenanceTypeDlg" Control="RemoveButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
-     <Publish Dialog="MaintenanceTypeDlg" Control="Back" Event="NewDialog" Value="MaintenanceWelcomeDlg">1</Publish>
-     <Property Id="ARPNOMODIFY" Value="1" />
-</UI>
-<UIRef Id="WixUI_Common" />
-		<MajorUpgrade DowngradeErrorMessage="A newer version of TextToSpeech is already installed." AllowDowngrades="no" />
-		<MediaTemplate EmbedCab ="yes"/>
+	<?define UpgradeCode="f4b1adbb-5b46-43f3-95f9-9ff2564da80b" ?>
+	
+	<?define Win64 = "no" ?>
+	<?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+	<?define MyAppExeSourcePath = "$(var.ProjectDir)..\TextToSpeech\bin\Release\TextToSpeech.exe" ?>
 
-		<Feature Id="ProductFeature" Title="TextToSpeech" Level="1">
-			<ComponentGroupRef Id="ProductComponents" />
-			<ComponentRef Id="DesktopFolderShortcut" />
-		</Feature>
-	</Product>
+	<Product Id="*" Name="!(loc.ApplicationName)" Language="!(loc.Language)" Version="$(var.VersionNumber)" Manufacturer="!(loc.ManufacturerFullName)" UpgradeCode="$(var.UpgradeCode)" >
 
-	<Fragment>
+		<Package Id="*" InstallerVersion="400" Compressed="yes" InstallScope="perMachine"  Description="!(loc.ProductDescription)" Comments="!(loc.Comments) $(var.VersionNumber)" />
+
+		<WixVariable Id="WixUILicenseRtf" Value="dummy" />
+
+		<!-- UI customization -->
+		
+		<WixVariable Id="WixUIBannerBmp" Value="$(var.ProjectDir)..\TextToSpeech\images\InstallerBanner.png" />
+		<WixVariable Id="WixUIDialogBmp" Value="$(var.ProjectDir)..\TextToSpeech\images\InstallerDialog.png" />
+
+		<Icon Id="Icon.exe" SourceFile="$(var.ProjectDir)..\TextToSpeech\images\299033_microphone_icon.ico"  />
+
+		<Property Id="ARPPRODUCTICON" Value="$(var.ProjectDir)..\TextToSpeech\images\299033_microphone_icon.ico" />
+		<Property Id="ARPNOREPAIR" Value="yes" Secure="yes" />
+		<!-- Remove repair -->
+		<Property Id="ARPNOMODIFY" Value="yes" Secure="yes" />
+
+		<MajorUpgrade DowngradeErrorMessage="!(loc.NewerInstalled)" AllowSameVersionUpgrades="yes" />
+
+		<InstallExecuteSequence>
+
+			<Custom Action="SetARPINSTALLLOCATION" After="InstallValidate"></Custom>
+
+		</InstallExecuteSequence>
+
+		<CustomAction Id="SetARPINSTALLLOCATION" Property="ARPINSTALLLOCATION" Value="[INSTALLDIR]" />
+
+		<Condition Message="!(loc.OS2Old)">
+			<![CDATA[Installed OR (VersionNT >= 600)]]>
+		</Condition>
+
+		<?if $(var.Platform) = x64 ?>
+		<Condition Message="!(loc.x86VersionRequired)">
+			<![CDATA[VersionNT64]]>
+		</Condition>
+		<?endif?>
+		
+		<CustomAction Id='SaveCmdLineValueINSTALLDIR' Property='CMDLINE_INSTALLDIR' Value='[INSTALLDIR]' Execute='firstSequence' />
+		<CustomAction Id='SetFromCmdLineValueINSTALLDIR' Property='INSTALLDIR' Value='[CMDLINE_INSTALLDIR]' Execute='firstSequence' />
+		<InstallUISequence>
+			<Custom Action='SaveCmdLineValueINSTALLDIR' Before='AppSearch' />
+			<Custom Action='SetFromCmdLineValueINSTALLDIR' After='AppSearch'>
+				CMDLINE_INSTALLDIR
+			</Custom>
+		</InstallUISequence>
+		<InstallExecuteSequence>
+			<Custom Action='SaveCmdLineValueINSTALLDIR' Before='AppSearch' />
+			<Custom Action='SetFromCmdLineValueINSTALLDIR' After='AppSearch'>
+				CMDLINE_INSTALLDIR
+			</Custom>
+		</InstallExecuteSequence>
+
+		<CustomAction Id='SaveCmdLineValueSERVERS' Property='CMDLINE_SERVERS' Value='[SERVERS]' Execute='firstSequence' />
+		<CustomAction Id='SetFromCmdLineValueSERVERS' Property='SERVERS' Value='[CMDLINE_SERVERS]' Execute='firstSequence' />
+		<InstallUISequence>
+			<Custom Action='SaveCmdLineValueSERVERS' Before='AppSearch' />
+			<Custom Action='SetFromCmdLineValueSERVERS' After='AppSearch'>
+				CMDLINE_SERVERS
+			</Custom>
+		</InstallUISequence>
+		<InstallExecuteSequence>
+			<Custom Action='SaveCmdLineValueSERVERS' Before='AppSearch' />
+			<Custom Action='SetFromCmdLineValueSERVERS' After='AppSearch'>
+				CMDLINE_SERVERS
+			</Custom>
+		</InstallExecuteSequence>
+
+		<Property Id="INSTALLDIR">
+			<RegistrySearch Id="DetermineInstallLocation" Type="raw" Root="HKLM" Key="Software\!(loc.ManufacturerName)\InstalledProducts\!(loc.ApplicationName)" Name="InstallLocation" />
+		</Property>
+		<Property Id="SERVERS">
+			<RegistrySearch Id="DetermineServers" Type="raw" Root="HKLM" Key="Software\!(loc.ManufacturerName)\InstalledProducts\!(loc.ApplicationName)" Name="Servers" />
+		</Property>
+		<SetProperty Before='InstallInitialize' Sequence='execute' Id='SERVERS' Value='localhost:19500'>NOT SERVERS</SetProperty>
+
+		<Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
 		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="TextToSpeech" />
+
+			<Directory Id="$(var.PlatformProgramFilesFolder)">
+
+				<Directory Id="ProgramFilesHK" Name="!(loc.ManufacturerName)">
+
+					<Directory Id="INSTALLDIR" Name="!(loc.ApplicationName)">
+
+						<Component Id="INSTALLDIR_comp" Guid="5f1b2af9-4924-401f-9220-16b7a1c021c0">
+							<CreateFolder />
+							<RemoveFile Id="RemoveFilesFromAppDirectory" Name="*.*" On="uninstall" />
+						</Component>
+						<Component Id = "TextToSpeech" Guid= "632364a3-1dbe-4c8d-a970-a431c981fb91">
+							<File Id = "TextToSpeech" Name= "TextToSpeech.exe" Source= "..\TextToSpeech\bin\Release\">
+							</File>
+						</Component>
+						<Component Id="TextToSpeechLoggerComponent" Guid="66494e37-b60c-4e87-873e-c255b1194b20">
+							<File Id="TextToSpeechLogger" Name="TextToSpeechLogger.dll" Source="..\TextToSpeechLogger\bin\Release\" KeyPath="yes" />
+						</Component>
+
+					</Directory>
+				</Directory>
 			</Directory>
-		<Directory Id="DesktopFolder" Name="Desktop"/>
+			<Directory Id="DesktopFolder" Name="Desktop"/>
+			
+
+			<!-- Registry entries -->
+			<Component Id="RegValInstallLocation_comp" Guid="c8afd96b-770e-4ac1-beb5-7b50dc37618c">
+				<RegistryKey Root="HKLM" Key="Software\!(loc.ManufacturerName)\InstalledProducts\!(loc.ApplicationName)">
+					<RegistryValue Name="InstallLocation" Value="[INSTALLDIR]" Type="string" KeyPath="yes" />
+					<RegistryValue Name="Servers" Value="[SERVERS]" Type="string" />
+				</RegistryKey>
+			</Component>
 		</Directory>
+
 		<DirectoryRef Id="DesktopFolder">
 			<Component Id="DesktopFolderShortcut" Guid="51edd39a-e106-4230-9051-39452953abe2">
-				<Shortcut Id="DesktopShortcut" Name="TextToSpeech" Description="TextToSpeech" Target="[INSTALLFOLDER]TextToSpeech.exe" WorkingDirectory="INSTALLFOLDER" />
+				<Shortcut Id="DesktopShortcut" Name="TextToSpeech" Description="TextToSpeech" Target="[INSTALLDIR]TextToSpeech.exe" WorkingDirectory="INSTALLDIR" />
 				<RemoveFolder Id="DesktopFolder" On="uninstall" />
 				<RegistryValue Root="HKCU" Key="Software\TextToSpeech" Name="installed" Type="integer" Value="1" KeyPath="yes" />
 			</Component>
-			</DirectoryRef>
-	</Fragment>
-	<Fragment>
-		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-			<Component Id = "TextToSpeech" Guid= "632364a3-1dbe-4c8d-a970-a431c981fb91">
-				<File Id = "TextToSpeech" Name= "TextToSpeech.exe" Source= "..\TextToSpeech\bin\Release\">
-				</File>
-			</Component>
-			<Component Id="TextToSpeechLoggerComponent" Guid="66494e37-b60c-4e87-873e-c255b1194b20">
-				<File Id="TextToSpeechLogger" Name="TextToSpeechLogger.dll" Source="..\TextToSpeechLogger\bin\Release\" KeyPath="yes" />
-			</Component>
-		</ComponentGroup>
-	</Fragment>
+		</DirectoryRef>
+		<Feature Id="Complete" Title="!(loc.ApplicationName)" Description="!(loc.FeatureCompleteDescription)" Display="expand" Level="1" ConfigurableDirectory="INSTALLDIR">
+
+			<Feature Id="MainProgram" Title="!(loc.FeatureMainProgramTitle)" Description="!(loc.FeatureMainProgramDescription)" Level="1">
+				<ComponentRef Id="INSTALLDIR_comp" />
+				<ComponentRef Id="TextToSpeech" />
+				<ComponentRef Id="TextToSpeechLoggerComponent" />
+				<ComponentRef Id="DesktopFolderShortcut" />
+
+				<!-- Registry entries -->
+				<ComponentRef Id="RegValInstallLocation_comp" />
+			</Feature>
+
+		</Feature>
+
+		<UI>
+			<UIRef Id="WixUI_HK" />
+		</UI>		
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+		<Property Id="WIXUI_SERVERS" Value="SERVERS" />
+	</Product>
+
 </Wix>
