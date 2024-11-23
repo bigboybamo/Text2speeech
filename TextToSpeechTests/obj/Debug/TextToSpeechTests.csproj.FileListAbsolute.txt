@@ -2,6 +2,7 @@ C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechTests\bin\Debug\Microsoft.V
 C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
 C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechTests\bin\Debug\Microsoft.TestPlatform.AdapterUtilities.dll
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechTests\bin\Debug\TextToSpeechTests.dll.config
 C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechTests\bin\Debug\TextToSpeechTests.dll
 C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechTests\bin\Debug\TextToSpeechTests.pdb
 C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechTests\bin\Debug\Appium.Net.dll
@@ -24,4 +25,3 @@ C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechTests\obj\Debug\TextToSpeec
 C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechTests\obj\Debug\TextToSp.137E3039.Up2Date
 C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechTests\obj\Debug\TextToSpeechTests.dll
 C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechTests\obj\Debug\TextToSpeechTests.pdb
-C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechTests\bin\Debug\TextToSpeechTests.dll.config
