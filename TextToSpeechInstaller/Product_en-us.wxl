@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WixLocalization Culture="en-us" Codepage="1252" xmlns="http://schemas.microsoft.com/wix/2006/localization">
 	<String Id="Language">1033</String>
-	<!-- Supported language and codepage codes can be found here: http://www.tramontana.co.hu/wix/lesson2.php#2.4 -->
-
 	<String Id="ApplicationName">TextToSpeech</String>
 	<String Id="ManufacturerName">Olabamiji Oyetubo</String>
 	<String Id="ManufacturerFullName">Olabamiji Oyetubo</String>
@@ -25,14 +23,4 @@
 
 	<String Id="ServerDlgTitle">{\WixUI_Font_Title}Receiver Configuration</String>
 	<String Id="ServerDlgDescription">Target servers for TextToSpeech's data</String>
-	<!--<String Id="ServerDlgServerLabel">
-		Specify to which Splunk Indexers or Forwarders uberAgent should send its data.
-		If multiple targets are specified, uberAgent load-balances between them.
-
-		Format:
-		server1:port1, server2:port2, ...
-		Default:
-		localhost:19500
-		(requires locally installed Universal Forwarder)
-	</String>-->
 </WixLocalization>
