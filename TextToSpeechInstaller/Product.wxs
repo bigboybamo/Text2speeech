@@ -12,15 +12,12 @@
 	<Product Id="*" Name="!(loc.ApplicationName)" Language="!(loc.Language)" Version="$(var.VersionNumber)" Manufacturer="!(loc.ManufacturerFullName)" UpgradeCode="$(var.UpgradeCode)" >
 
 		<Package Id="*" InstallerVersion="400" Compressed="yes" InstallScope="perMachine"  Description="!(loc.ProductDescription)" Comments="!(loc.Comments) $(var.VersionNumber)" />
-
 		<WixVariable Id="WixUILicenseRtf" Value="dummy" />
-
-		<!-- UI customization -->
-		
+		<!-- UI customization -->		
 		<WixVariable Id="WixUIBannerBmp" Value="$(var.ProjectDir)..\TextToSpeech\images\InstallerBanner.png" />
 		<WixVariable Id="WixUIDialogBmp" Value="$(var.ProjectDir)..\TextToSpeech\images\InstallerDialog.png" />
 
-		<Icon Id="Icon.exe" SourceFile="$(var.ProjectDir)..\TextToSpeech\images\299033_microphone_icon.ico"  />
+		<Icon Id="Icon.exe" SourceFile="$(var.ProjectDir)..\TextToSpeech\images\299033_microphone_icon.ico" />
 
 		<Property Id="ARPPRODUCTICON" Value="$(var.ProjectDir)..\TextToSpeech\images\299033_microphone_icon.ico" />
 		<Property Id="ARPNOREPAIR" Value="yes" Secure="yes" />
@@ -88,13 +85,9 @@
 		<Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
 
 		<Directory Id="TARGETDIR" Name="SourceDir">
-
 			<Directory Id="$(var.PlatformProgramFilesFolder)">
-
 				<Directory Id="ProgramFilesHK" Name="!(loc.ManufacturerName)">
-
 					<Directory Id="INSTALLDIR" Name="!(loc.ApplicationName)">
-
 						<Component Id="INSTALLDIR_comp" Guid="5f1b2af9-4924-401f-9220-16b7a1c021c0">
 							<CreateFolder />
 							<RemoveFile Id="RemoveFilesFromAppDirectory" Name="*.*" On="uninstall" />
@@ -106,13 +99,11 @@
 						<Component Id="TextToSpeechLoggerComponent" Guid="66494e37-b60c-4e87-873e-c255b1194b20">
 							<File Id="TextToSpeechLogger" Name="TextToSpeechLogger.dll" Source="..\TextToSpeechLogger\bin\Release\" KeyPath="yes" />
 						</Component>
-
 					</Directory>
 				</Directory>
 			</Directory>
 			<Directory Id="DesktopFolder" Name="Desktop"/>
 			
-
 			<!-- Registry entries -->
 			<Component Id="RegValInstallLocation_comp" Guid="c8afd96b-770e-4ac1-beb5-7b50dc37618c">
 				<RegistryKey Root="HKLM" Key="Software\!(loc.ManufacturerName)\InstalledProducts\!(loc.ApplicationName)">
@@ -140,14 +131,12 @@
 				<!-- Registry entries -->
 				<ComponentRef Id="RegValInstallLocation_comp" />
 			</Feature>
-
 		</Feature>
-
 		<UI>
 			<UIRef Id="WixUI_HK" />
 		</UI>		
 		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
 		<Property Id="WIXUI_SERVERS" Value="SERVERS" />
+		<Property Id="WIXUI_WINDOWICON" Value="[WixUI_WINDOWICON]" />
 	</Product>
-
 </Wix>
