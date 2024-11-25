@@ -17,12 +17,12 @@
 
 		<!-- UI customization -->		
 
-		<WixVariable Id="WixUIBannerBmp" Value="$(var.ProjectDir)..\TextToSpeech\images\InstallerBanner_v2.png" />
-		<WixVariable Id="WixUIDialogBmp" Value="$(var.ProjectDir)..\TextToSpeech\images\InstallerDialog_v2.png" />
+		<WixVariable Id="WixUIBannerBmp" Value="$(var.ProjectDir)\images\InstallerBanner_v2.png" />
+		<WixVariable Id="WixUIDialogBmp" Value="$(var.ProjectDir)\images\InstallerDialog_v2.png" />
 
-		<Icon Id="Icon.exe" SourceFile="$(var.ProjectDir)..\TextToSpeech\images\299033_microphone_icon.ico"  />
+		<Icon Id="Icon.exe" SourceFile="$(var.ProjectDir)\images\299033_microphone_icon.ico"  />
 
-		<Property Id="ARPPRODUCTICON" Value="$(var.ProjectDir)..\TextToSpeech\images\299033_microphone_icon.ico" />
+		<Property Id="ARPPRODUCTICON" Value="$(var.ProjectDir)\images\299033_microphone_icon.ico" />
 		<Property Id="ARPNOREPAIR" Value="yes" Secure="yes" />
 		<!-- Remove repair -->
 		<Property Id="ARPNOMODIFY" Value="yes" Secure="yes" />
