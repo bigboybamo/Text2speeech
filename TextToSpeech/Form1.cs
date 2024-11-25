@@ -17,11 +17,11 @@ namespace TextToSpeech
             // Set the form size
             this.Height = 600;
             this.Width = 1000;
+            StartTimer();
         }
 
         private ISpeechSynthesizer synthVoice;
         private bool isStopped;
-
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -217,6 +217,22 @@ namespace TextToSpeech
                 synthVoice.Volume = trackBar2.Value;
                 synthVoice.RestartFromCurrentPosition(txtSpechText.Text);
             }
+        }
+
+        private void StartTimer()
+        {
+            clockTimer = new Timer
+            {
+                Interval = 500
+            };
+            clockTimer.Tick += clockTimer_Tick;
+            clockTimer.Enabled = true;
+        }
+
+        private void clockTimer_Tick(object sender, EventArgs e)
+        {
+            clockLabel.Text = DateTime.Now.ToString("HH:mm:ss");
+            clockLabel.Visible = true;
         }
     }
 }

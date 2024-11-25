@@ -50,6 +50,8 @@ namespace TextToSpeech
             this.cmbVoice = new System.Windows.Forms.ComboBox();
             this.ofd1 = new System.Windows.Forms.OpenFileDialog();
             this.SaveAudio = new System.Windows.Forms.CheckBox();
+            this.monthCalendar = new System.Windows.Forms.MonthCalendar();
+            this.clockLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -278,12 +280,30 @@ namespace TextToSpeech
             this.SaveAudio.Text = "Save Audio File";
             this.SaveAudio.UseVisualStyleBackColor = true;
             // 
+            // monthCalendar
+            // 
+            this.monthCalendar.Location = new System.Drawing.Point(1119, 79);
+            this.monthCalendar.Name = "monthCalendar";
+            this.monthCalendar.TabIndex = 12;
+            // 
+            // clockLabel
+            // 
+            this.clockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clockLabel.Location = new System.Drawing.Point(1121, 20);
+            this.clockLabel.Name = "clockLabel";
+            this.clockLabel.Size = new System.Drawing.Size(316, 50);
+            this.clockLabel.TabIndex = 13;
+            this.clockLabel.Text = "Clock time";
+            this.clockLabel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1449, 851);
+            this.Controls.Add(this.clockLabel);
+            this.Controls.Add(this.monthCalendar);
             this.Controls.Add(this.SaveAudio);
             this.Controls.Add(this.cmbVoice);
             this.Controls.Add(this.BtnPronounce);
@@ -335,6 +355,9 @@ namespace TextToSpeech
         private System.Windows.Forms.ComboBox cmbVoice;
         private System.Windows.Forms.OpenFileDialog ofd1;
         private System.Windows.Forms.CheckBox SaveAudio;
+        private System.Windows.Forms.MonthCalendar monthCalendar;
+        private System.Windows.Forms.Label clockLabel;
+        private System.Windows.Forms.Timer clockTimer;
     }
 }
 
