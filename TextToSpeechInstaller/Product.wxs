@@ -15,8 +15,8 @@
 
 		<WixVariable Id="WixUILicenseRtf" Value="dummy" />
 
-		<!-- UI customization -->
-		
+		<!-- UI customization -->		
+
 		<WixVariable Id="WixUIBannerBmp" Value="$(var.ProjectDir)..\TextToSpeech\images\InstallerBanner_v2.png" />
 		<WixVariable Id="WixUIDialogBmp" Value="$(var.ProjectDir)..\TextToSpeech\images\InstallerDialog_v2.png" />
 
