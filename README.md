@@ -6,7 +6,7 @@ A windows forms text to speech program
 [![License](https://img.shields.io/badge/License-Mit-blue.svg?style=for-the-badge&logo=mit)](LICENSE.md)
 
 
-![alt text](https://github.com/bigboybamo/Text2speeech/blob/main/TextToSpeech/images/text_speech.JPG)
+![alt text](https://github.com/bigboybamo/Text2speeech/blob/main/TextToSpeech/images/text_speech_v2.JPG)
 
 ## Features
 * Convert written text to spoken sentences.
