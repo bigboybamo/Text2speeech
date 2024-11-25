@@ -229,6 +229,7 @@ namespace TextToSpeech
             clockTimer.Enabled = true;
         }
 
+        //TODO
         private void clockTimer_Tick(object sender, EventArgs e)
         {
             clockLabel.Text = DateTime.Now.ToString("HH:mm:ss");
