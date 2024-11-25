@@ -1,2 +1,0 @@
-C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechInstaller\bin\Release\TextToSpeechInstaller.msi
-C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechInstaller\bin\Release\TextToSpeechInstaller.wixpdb

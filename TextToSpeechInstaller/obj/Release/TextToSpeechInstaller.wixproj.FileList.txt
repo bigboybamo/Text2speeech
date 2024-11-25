@@ -1,6 +1,9 @@
-C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechInstaller\bin\Release\TextToSpeechInstaller.msi
-C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechInstaller\bin\Release\TextToSpeechInstaller.wixpdb
 obj\Release\Product.wixobj
-obj\Release\TextToSpeechInstaller.wixproj.BindContentsFileListnull.txt
-obj\Release\TextToSpeechInstaller.wixproj.BindOutputsFileListnull.txt
-obj\Release\TextToSpeechInstaller.wixproj.BindBuiltOutputsFileListnull.txt
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechInstaller\bin\Release\en-us\TextToSpeechInstaller.msi
+C:\Users\oyetu\source\repos\Text2speeech\TextToSpeechInstaller\bin\Release\en-us\TextToSpeechInstaller.wixpdb
+obj\Release\LicenseAgreementDlg_HK.wixobj
+obj\Release\ServerDlg.wixobj
+obj\Release\WixUI_HK.wixobj
+obj\Release\TextToSpeechInstaller.wixproj.BindContentsFileListen-us.txt
+obj\Release\TextToSpeechInstaller.wixproj.BindOutputsFileListen-us.txt
+obj\Release\TextToSpeechInstaller.wixproj.BindBuiltOutputsFileListen-us.txt
