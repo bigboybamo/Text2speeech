@@ -19,5 +19,10 @@ jobs:
     - name: Restore NuGet packages
       run: nuget restore TextToSpeech.sln
 
-    - name: Build the solution
-      run: msbuild TextToSpeech.sln /p:Configuration=Release
+    # Step 1: Build the WinForms project
+    - name: Build WinForms Project
+      run: msbuild TextToSpeech/TextToSpeech.csproj /p:Configuration=Release
+
+    # Step 2: Build the Wix Installer project
+    - name: Build Wix Installer Project
+      run: msbuild TextToSpeechInstaller/TextToSpeechInstaller.wixproj /p:Configuration=Release
