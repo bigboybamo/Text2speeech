@@ -23,6 +23,11 @@ jobs:
     - name: Build WinForms Project
       run: msbuild TextToSpeech/TextToSpeech.csproj /p:Configuration=Release
 
+      - name: Copy EULA file to output directory
+      run: |
+        mkdir "$(Build.BinariesDirectory)\TextToSpeechInstaller"
+        copy "TextToSpeechInstaller\Eula-en.rtf" "$(Build.BinariesDirectory)\TextToSpeechInstaller\Eula-en.rtf"
+
     # Step 2: Build the Wix Installer project
     - name: Build Wix Installer Project
       run: msbuild TextToSpeechInstaller/TextToSpeechInstaller.wixproj /p:Configuration=Release
