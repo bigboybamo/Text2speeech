@@ -24,7 +24,12 @@
     <Compile Include="ServerDlg.wxs" />
     <Compile Include="WixUI_HK.wxs" />
   </ItemGroup>
-  <ItemGroup>
+	<ItemGroup>
+		<Content Include="Eula-en.rtf">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
     <WixExtension Include="WixUtilExtension">
       <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
       <Name>WixUtilExtension</Name>
