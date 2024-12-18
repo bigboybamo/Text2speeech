@@ -29,6 +29,7 @@ namespace TextToSpeech
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.BtnSpeech = new System.Windows.Forms.Button();
             this.BtnOpenFile = new System.Windows.Forms.Button();
@@ -51,6 +52,8 @@ namespace TextToSpeech
             this.ofd1 = new System.Windows.Forms.OpenFileDialog();
             this.SaveAudio = new System.Windows.Forms.CheckBox();
             this.MonthCalendar = new System.Windows.Forms.MonthCalendar();
+            this.ClockTimer = new System.Windows.Forms.Timer(this.components);
+            this.ClockLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -285,12 +288,27 @@ namespace TextToSpeech
             this.MonthCalendar.Name = "MonthCalendar";
             this.MonthCalendar.TabIndex = 12;
             // 
+            // ClockTimer
+            // 
+            this.ClockTimer.Tick += new System.EventHandler(this.ClockTimer_Tick);
+            // 
+            // ClockLabel
+            // 
+            this.ClockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClockLabel.Location = new System.Drawing.Point(1118, 44);
+            this.ClockLabel.Name = "ClockLabel";
+            this.ClockLabel.Size = new System.Drawing.Size(316, 50);
+            this.ClockLabel.TabIndex = 13;
+            this.ClockLabel.Text = "Clock time";
+            this.ClockLabel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1536, 851);
+            this.Controls.Add(this.ClockLabel);
             this.Controls.Add(this.MonthCalendar);
             this.Controls.Add(this.SaveAudio);
             this.Controls.Add(this.cmbVoice);
@@ -344,6 +362,8 @@ namespace TextToSpeech
         private System.Windows.Forms.OpenFileDialog ofd1;
         private System.Windows.Forms.CheckBox SaveAudio;
         private System.Windows.Forms.MonthCalendar MonthCalendar;
+        private System.Windows.Forms.Timer ClockTimer;
+        private System.Windows.Forms.Label ClockLabel;
     }
 }
 
