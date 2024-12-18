@@ -50,6 +50,7 @@ namespace TextToSpeech
             this.cmbVoice = new System.Windows.Forms.ComboBox();
             this.ofd1 = new System.Windows.Forms.OpenFileDialog();
             this.SaveAudio = new System.Windows.Forms.CheckBox();
+            this.MonthCalendar = new System.Windows.Forms.MonthCalendar();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -278,12 +279,19 @@ namespace TextToSpeech
             this.SaveAudio.Text = "Save Audio File";
             this.SaveAudio.UseVisualStyleBackColor = true;
             // 
+            // MonthCalendar
+            // 
+            this.MonthCalendar.Location = new System.Drawing.Point(1122, 138);
+            this.MonthCalendar.Name = "MonthCalendar";
+            this.MonthCalendar.TabIndex = 12;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1449, 851);
+            this.ClientSize = new System.Drawing.Size(1536, 851);
+            this.Controls.Add(this.MonthCalendar);
             this.Controls.Add(this.SaveAudio);
             this.Controls.Add(this.cmbVoice);
             this.Controls.Add(this.BtnPronounce);
@@ -335,6 +343,7 @@ namespace TextToSpeech
         private System.Windows.Forms.ComboBox cmbVoice;
         private System.Windows.Forms.OpenFileDialog ofd1;
         private System.Windows.Forms.CheckBox SaveAudio;
+        private System.Windows.Forms.MonthCalendar MonthCalendar;
     }
 }
 
