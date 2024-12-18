@@ -17,6 +17,7 @@ namespace TextToSpeech
             // Set the form size
             this.Height = 600;
             this.Width = 1000;
+            StartTimer();
         }
 
         private ISpeechSynthesizer synthVoice;
@@ -217,6 +218,22 @@ namespace TextToSpeech
                 synthVoice.Volume = trackBar2.Value;
                 synthVoice.RestartFromCurrentPosition(txtSpechText.Text);
             }
+        }
+
+        private void StartTimer()
+        {
+            ClockTimer = new Timer
+            {
+                Interval = 500
+            };
+            ClockTimer.Tick += ClockTimer_Tick;
+            ClockTimer.Enabled = true;
+        }
+
+        private void ClockTimer_Tick(object sender, EventArgs e)
+        {
+            ClockLabel.Text = DateTime.Now.ToString("HH:mm:ss");
+            ClockLabel.Visible = true;
         }
     }
 }
