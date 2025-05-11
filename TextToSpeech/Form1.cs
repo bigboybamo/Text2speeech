@@ -6,6 +6,7 @@ using GemBox.Pdf;
 using TextToSpeech.Interfaces;
 using TextToSpeech.Implementations;
 using TextToSpeechLogger;
+using TextToSpeech.Common;
 
 namespace TextToSpeech
 {
@@ -111,7 +112,7 @@ namespace TextToSpeech
                 }
                 else
                 {
-                    MessageBox.Show("Error");
+                    MessageBox.Show(ErrorMessages.ErrorOpeningFile);
                 }
             }
         }
@@ -181,24 +182,24 @@ namespace TextToSpeech
 
         private void CheckVoiceandText(bool ishighLighted = false)
         {
-            if (cmbVoice.Text == "Select Voice" || cmbVoice.SelectedIndex == 0)
+            if (cmbVoice.Text == ErrorMessages.NoVoiceSelected || cmbVoice.SelectedIndex == 0)
             {
-                throw new InvalidOperationException("Please Select a Voice");
+                throw new InvalidOperationException(ErrorMessages.NoVoiceSelected);
             }
 
             if (txtSpechText.Text.Trim().Length == 0)
             {
-                throw new InvalidOperationException("Please Enter Some Text");
+                throw new InvalidOperationException(ErrorMessages.NoTextProvided);
             }
 
             if (ishighLighted && txtSpechText.SelectionLength == 0)
             {
-                throw new InvalidOperationException("Please Highlight Some Text");
+                throw new InvalidOperationException(ErrorMessages.NoTextHighlighted);
             }
 
             if (synthVoice.State == SynthesizerState.Speaking)
             {
-                throw new InvalidOperationException("Please Wait for the current speech to finish or Stop");
+                throw new InvalidOperationException(ErrorMessages.TextStillSpeaking);
             }
         }
 
