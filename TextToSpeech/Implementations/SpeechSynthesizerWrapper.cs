@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Speech.Synthesis;
 using TextToSpeech.Interfaces;
@@ -153,6 +154,7 @@ namespace TextToSpeech.Implementations
             _speechSynthesizer.SetOutputToWaveFile(outputPath);
             _speechSynthesizer.Speak(text);
             _speechSynthesizer.SetOutputToNull();
+            Process.Start(textToSpeechPath);
         }
 
         ~SpeechSynthesizerWrapper()

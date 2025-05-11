@@ -1,0 +1,2 @@
+..\TextToSpeech\bin\Release\TextToSpeech.exe
+..\TextToSpeechLogger\bin\Release\TextToSpeechLogger.dll
